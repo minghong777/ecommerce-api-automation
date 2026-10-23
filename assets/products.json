@@ -1,0 +1,17 @@
+{
+  "provenance": "Bundled fictional catalog authored for this portfolio; not a cached live API response.",
+  "products": [
+    {"id":1,"title":"Demo Wireless Headphones","category":"electronics","price":79.90},
+    {"id":2,"title":"Demo Mechanical Keyboard","category":"electronics","price":109.95},
+    {"id":3,"title":"Demo USB-C Hub","category":"electronics","price":39.99},
+    {"id":4,"title":"Demo Desk Lamp","category":"home","price":45.50},
+    {"id":5,"title":"Demo Cotton Tote","category":"accessories","price":18.00},
+    {"id":6,"title":"Demo Travel Bottle","category":"accessories","price":24.95},
+    {"id":7,"title":"Demo Notebook Set","category":"stationery","price":12.49},
+    {"id":8,"title":"Demo Desk Organizer","category":"home","price":32.00},
+    {"id":9,"title":"Demo Laptop Stand","category":"electronics","price":54.90},
+    {"id":10,"title":"Demo Ceramic Mug","category":"home","price":16.75},
+    {"id":11,"title":"Demo Yoga Mat","category":"fitness","price":42.00},
+    {"id":12,"title":"Demo Resistance Bands","category":"fitness","price":21.50}
+  ]
+}

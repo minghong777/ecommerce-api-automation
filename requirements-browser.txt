@@ -1,0 +1,2 @@
+# Optional local browser verification only. Requires installed Google Chrome.
+playwright>=1.49,<2

@@ -1,0 +1,7 @@
+# Example only; not installed. Cron timezone follows host configuration.
+# Put exports in an access-controlled directory; review retention separately.
+# Store service-account path and destination variables in a chmod 600 file
+# outside the repository, e.g. /home/michael/.config/commerceflow/job.env.
+# Do not put credential JSON inline in crontab or command arguments.
+# flock prevents overlapping runs on this host; use a single writer per target.
+0 7 * * * /usr/bin/flock -n /home/michael/.config/commerceflow/job.lock /bin/bash -c 'set -a; source /home/michael/.config/commerceflow/job.env; set +a; cd /home/michael/ai-workspace/ecommerce-api-automation && .venv/bin/python -m src.automation --source offline --sync --replace-managed-tabs' >> /home/michael/.config/commerceflow/job.log 2>&1

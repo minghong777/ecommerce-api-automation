@@ -1,0 +1,274 @@
+{
+  "verified": true,
+  "digest": "9eef178f3ae539e56c517cba8108219fa8f42c672d7e9df8ffff1b5399f913ba",
+  "worksheets": [
+    {
+      "name": "CommerceFlow_Summary",
+      "data_rows": 19,
+      "columns": 2,
+      "headers": [
+        "metric",
+        "value"
+      ],
+      "sample_rows": [
+        [
+          "disclosure",
+          "DEMO / SYNTHETIC DATA — independent portfolio project"
+        ],
+        [
+          "currency",
+          "USD"
+        ],
+        [
+          "money_format",
+          "Decimal strings in USD"
+        ],
+        [
+          "source",
+          "Bundled fictional products · offline"
+        ],
+        [
+          "filters",
+          "{\"end\": \"2026-09-30\", \"search\": \"\", \"start\": \"2026-07-01\", \"statuses\": [\"paid\", \"shipped\", \"completed\", \"pending\", \"cancelled\", \"refunded\"]}"
+        ],
+        [
+          "revenue_rule",
+          "Paid/shipped/completed merchandise less discounts plus shipping; other statuses zero."
+        ],
+        [
+          "gmv",
+          "57948.48"
+        ],
+        [
+          "discounts",
+          "2482.63"
+        ]
+      ],
+      "exact_match": true
+    },
+    {
+      "name": "CommerceFlow_Orders",
+      "data_rows": 240,
+      "columns": 10,
+      "headers": [
+        "order_id",
+        "customer_id",
+        "order_date",
+        "status",
+        "shipping_fee",
+        "discount_amount",
+        "gmv",
+        "units",
+        "refunds",
+        "net_sales"
+      ],
+      "sample_rows": [
+        [
+          "DEMO-00129",
+          "DEMO-C027",
+          "2026-07-01T13:46:00+00:00",
+          "shipped",
+          "5.99",
+          "18.58",
+          "123.87",
+          "6",
+          "0.00",
+          "111.28"
+        ],
+        [
+          "DEMO-00006",
+          "DEMO-C025",
+          "2026-07-01T23:30:00+00:00",
+          "paid",
+          "5.99",
+          "3.23",
+          "21.50",
+          "1",
+          "0.00",
+          "24.26"
+        ],
+        [
+          "DEMO-00201",
+          "DEMO-C015",
+          "2026-07-02T01:10:00+00:00",
+          "completed",
+          "0.00",
+          "44.64",
+          "446.40",
+          "12",
+          "0.00",
+          "401.76"
+        ],
+        [
+          "DEMO-00048",
+          "DEMO-C026",
+          "2026-07-03T04:14:00+00:00",
+          "paid",
+          "0.00",
+          "21.30",
+          "425.92",
+          "8",
+          "0.00",
+          "404.62"
+        ],
+        [
+          "DEMO-00074",
+          "DEMO-C037",
+          "2026-07-03T04:51:00+00:00",
+          "refunded",
+          "5.99",
+          "0.00",
+          "104.45",
+          "1",
+          "110.44",
+          "0.00"
+        ],
+        [
+          "DEMO-00137",
+          "DEMO-C009",
+          "2026-07-03T06:42:00+00:00",
+          "completed",
+          "0.00",
+          "0.00",
+          "200.90",
+          "5",
+          "0.00",
+          "200.90"
+        ],
+        [
+          "DEMO-00208",
+          "DEMO-C024",
+          "2026-07-03T19:05:00+00:00",
+          "cancelled",
+          "0.00",
+          "9.52",
+          "190.47",
+          "5",
+          "0.00",
+          "0.00"
+        ],
+        [
+          "DEMO-00211",
+          "DEMO-C025",
+          "2026-07-03T20:58:00+00:00",
+          "paid",
+          "0.00",
+          "0.00",
+          "177.69",
+          "4",
+          "0.00",
+          "177.69"
+        ]
+      ],
+      "exact_match": true
+    },
+    {
+      "name": "CommerceFlow_TopProducts",
+      "data_rows": 12,
+      "columns": 5,
+      "headers": [
+        "product_id",
+        "title",
+        "category",
+        "units_sold",
+        "net_revenue"
+      ],
+      "sample_rows": [
+        [
+          "2",
+          "Demo Mechanical Keyboard",
+          "electronics",
+          "80",
+          "8111.28"
+        ],
+        [
+          "1",
+          "Demo Wireless Headphones",
+          "electronics",
+          "94",
+          "7045.45"
+        ],
+        [
+          "4",
+          "Demo Desk Lamp",
+          "home",
+          "125",
+          "5268.22"
+        ],
+        [
+          "9",
+          "Demo Laptop Stand",
+          "electronics",
+          "96",
+          "4742.42"
+        ],
+        [
+          "3",
+          "Demo USB-C Hub",
+          "electronics",
+          "110",
+          "4028.01"
+        ],
+        [
+          "8",
+          "Demo Desk Organizer",
+          "home",
+          "101",
+          "2950.00"
+        ],
+        [
+          "11",
+          "Demo Yoga Mat",
+          "fitness",
+          "77",
+          "2946.83"
+        ],
+        [
+          "12",
+          "Demo Resistance Bands",
+          "fitness",
+          "96",
+          "1941.29"
+        ]
+      ],
+      "exact_match": true
+    }
+  ],
+  "order_count": 240,
+  "unique_order_ids": 240,
+  "duplicate_orders": 0,
+  "financial_checks": {
+    "net_sales_usd": "43204.59",
+    "order_totals_match_summary": true,
+    "product_revenue_plus_shipping_matches_sales": true
+  },
+  "verified_at": "2026-10-23T09:58:43.581274+00:00",
+  "disclosure": "DEMO / SYNTHETIC DATA",
+  "source": "Actual Google Sheets API read-back; all target cells compared with expected offline report.",
+  "summary": {
+    "gmv": "57948.48",
+    "discounts": "2482.63",
+    "shipping_fees": "329.45",
+    "refunds": "3382.02",
+    "cancelled_orders": 19,
+    "cancelled_gmv": "4741.20",
+    "refunded_orders": 12,
+    "paid_gmv": "45357.77",
+    "net_sales": "43204.59",
+    "paid_order_count": 186,
+    "average_order_value": "232.28",
+    "units_sold": 1142,
+    "selected_order_count": 240
+  },
+  "idempotency": {
+    "passed": true,
+    "synchronizations_performed": 2,
+    "first_readback_at": "2026-10-23T09:57:58.577717+00:00",
+    "repeat_readback_at": "2026-10-23T09:58:43.581274+00:00",
+    "same_digest": true,
+    "same_cell_samples_and_row_counts": true,
+    "order_count_before": 240,
+    "order_count_after": 240,
+    "duplicate_orders_after": 0
+  }
+}

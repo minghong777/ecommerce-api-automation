@@ -1,0 +1,14 @@
+{
+  "captured_at": "2026-10-23T09:59:48.045346+00:00",
+  "screenshots": [
+    "01-dashboard.png",
+    "02-orders.png",
+    "03-sales-analytics.png",
+    "04-report-export.png",
+    "05-api-integration.png",
+    "06-google-sheets-verification.png"
+  ],
+  "actual_api_product_count": 194,
+  "sheets_evidence": "Verified actual API read-back, rendered as a labelled evidence view.",
+  "disclosure": "DEMO / SYNTHETIC DATA"
+}
