@@ -1,12 +1,15 @@
 # E-commerce API & Operations Automation
 
+> **🚀 [Open the Live Streamlit Demo](https://ecommerce-api-automation.streamlit.app/)**
+>
+> Explore the sales dashboard in your browser. No Google login required. All customers, orders, and revenue are synthetic.
+
 CommerceFlow — E-commerce API Automation & Sales Dashboard.
 
 A working Python portfolio application that connects a public product API to normalized commerce data, reproducible sales analytics, and downloadable business reports. Built for demonstrating REST integration, data validation, monetary arithmetic, reporting, and Streamlit UI development.
 
 **Independent portfolio project. DEMO / SYNTHETIC DATA. No real client engagement, customer records, transactions, or actual revenue.**
 
-- Future Streamlit demo URL: `TODO — not deployed`
 - GitHub repository: https://github.com/minghong777/ecommerce-api-automation
 
 ## Preview
@@ -153,7 +156,7 @@ This checks desktop navigation, actual downloads, filtered JSON export, and a 39
 
 ## Demo limitations
 
-Synthetic data cannot establish actual business performance. Refunds have no separate refund timestamps, so this demo is a current-status view grouped by original order date, not period cash flow. There are no partial refunds, tax, FX, inventory updates, real checkout, persistent storage, logins, or an installed background scheduler. Google Sheets writes require your own authorization. Real writes and full read-back verification were completed on a dedicated test spreadsheet on 2026-10-23; credentials and destination identifiers are excluded from this repository. Catalog changes on the public service may change generated results. Network latency can trigger bounded retries; offline mode remains fully usable. The source is published on GitHub; the application has not been publicly deployed.
+Synthetic data cannot establish actual business performance. Refunds have no separate refund timestamps, so this demo is a current-status view grouped by original order date, not period cash flow. There are no partial refunds, tax, FX, inventory updates, real checkout, persistent storage, logins, or an installed background scheduler. Google Sheets writes require your own authorization. Real writes and full read-back verification were completed on a dedicated test spreadsheet on 2026-10-23; credentials and destination identifiers are excluded from this repository. Catalog changes on the public service may change generated results. Network latency can trigger bounded retries; offline mode remains fully usable. The source is published on GitHub, and the public demo is available through the Live Streamlit Demo link above.
 
 ## Phase 3: Google Sheets and scheduled automation
 
@@ -201,8 +204,8 @@ Historical evidence is dated; it does not assert permanent or current access.
 
 The owner authorized publication of the final-review updates on 2026-10-25.
 The GitHub repository contains the reviewed source, documentation, and images.
-Public application deployment and scheduler activation require separate approval;
-no scheduling is enabled.
+The owner-provided public Streamlit URL was verified on 2026-10-26. Further cloud
+configuration changes and scheduler activation require separate approval; no scheduling is enabled.
 
 
 ## Final public-demo review
@@ -216,5 +219,6 @@ resolve from the source directory, not a developer-specific absolute path.
 
 The browser checker accepts `--url` for a trusted test server and exercises all
 seven workspaces on desktop and 390-pixel mobile layouts, including real downloads.
-The Sheets screenshot is explicitly labelled historical. No live demo URL has been
-created; do not substitute the private spreadsheet URL for a public demo link.
+The Sheets screenshot is explicitly labelled historical. The public demo is
+https://ecommerce-api-automation.streamlit.app/; never substitute a private
+spreadsheet URL for the public demo link.
