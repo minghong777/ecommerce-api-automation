@@ -32,11 +32,13 @@ A fixed seed (`20261022`) produces 240 synthetic orders, 40 fictional customers,
 - **Report Export:** in-memory CSV, JSON, and styled Excel workbook with Summary, Orders, OrderItems, TopProducts sheets.
 - **Google Sheets Integration:** credential status and filtered dry-run preview, with trusted CLI synchronization. The legacy Integrations route explains how to activate external scheduling; no jobs run until you configure them.
 
+The public web entrypoint refuses a credentialed environment; keep Google service-account keys exclusively in a separate private CLI process. The public app needs no Google Secrets or spreadsheet destination.
+
 The sidebar date range (inclusive UTC dates), status selection, and case-insensitive order-ID substring search apply to all KPIs, charts, tables, and exports. Selecting no statuses gives an empty result, not an implicit “all.” The API catalog preview is intentionally independent of order filters.
 
 ## Tech stack
 
-Python 3.11+, Streamlit, httpx, pandas, Plotly, openpyxl, pytest. The dashboard and CLI dry-run need no API keys, paid services, or credentials. Optional Google Sheets writes use `google-auth` service-account authentication configured outside the repository. Optional Playwright is used for browser verification only.
+Python 3.11+ (3.12 tested), Streamlit >=1.66.1, httpx, pandas, Plotly, openpyxl, pytest. The dashboard and CLI dry-run need no API keys, paid services, or credentials. Optional Google Sheets writes use `google-auth` service-account authentication configured outside the repository. Optional Playwright is used for browser verification only.
 
 ## Local setup
 
@@ -174,7 +176,7 @@ not proof of remote access. Real Google writes have been verified separately; no
 ## Verified delivery
 
 On 2026-10-23, two real Google Sheets synchronizations and complete API read-back
-checks succeeded. Both snapshots contained 19 summary data rows, 240 orders with
+checks succeeded. These are historical results, not a live connection indicator. Both snapshots contained 19 summary data rows, 240 orders with
 240 unique IDs, and 12 product-sales rows. All cells matched the expected offline
 report. Recognized synthetic sales reconciled to USD 43,204.59; zero duplicate
 orders appeared after the second run. The existing unrelated worksheet was retained.
@@ -197,5 +199,22 @@ row count, order ID, or financial reconciliation differs from the expected offli
 report. The generated evidence excludes spreadsheet IDs and account credentials.
 Historical evidence is dated; it does not assert permanent or current access.
 
-GitHub publication was authorized by the owner. Public application deployment and
-scheduler activation still require explicit approval. No scheduling has been enabled.
+The owner authorized publication of the final-review updates on 2026-10-25.
+The GitHub repository contains the reviewed source, documentation, and images.
+Public application deployment and scheduler activation require separate approval;
+no scheduling is enabled.
+
+
+## Final public-demo review
+
+See [deployment preparation](docs/DEPLOYMENT.md) for the exact repository, `main`
+branch, `app.py` entrypoint, Python 3.12 setting, and the requirement to leave Cloud
+Secrets empty. The current Streamlit minimum is the locally tested 1.66.1; older
+1.45 releases do not support the layout arguments used here. Root requirements
+were installed in a fresh environment during review. App fixtures and modules
+resolve from the source directory, not a developer-specific absolute path.
+
+The browser checker accepts `--url` for a trusted test server and exercises all
+seven workspaces on desktop and 390-pixel mobile layouts, including real downloads.
+The Sheets screenshot is explicitly labelled historical. No live demo URL has been
+created; do not substitute the private spreadsheet URL for a public demo link.

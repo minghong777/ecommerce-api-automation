@@ -9,6 +9,9 @@
     "06-google-sheets-verification.png"
   ],
   "actual_api_product_count": 194,
-  "sheets_evidence": "Verified actual API read-back, rendered as a labelled evidence view.",
-  "disclosure": "DEMO / SYNTHETIC DATA"
+  "sheets_evidence": "Historical Google Sheets API read-back from 2026-10-23; not a live connection or the Google Sheets editor.",
+  "disclosure": "DEMO / SYNTHETIC DATA",
+  "historical_label_reviewed_at": "2026-10-23T14:31:37.408266+00:00",
+  "analytics_framing_reviewed_at": "2026-10-23T14:35:10.295365+00:00",
+  "final_review": "All six images inspected against the app. Analytics framing includes full reconciliation; Sheets image explicitly historical. No private Google identity or destination included."
 }

@@ -1,6 +1,7 @@
 """Launch: streamlit run app.py"""
 from dataclasses import asdict
 from datetime import timezone
+import os
 import pandas as pd
 import plotly.express as px
 import streamlit as st
@@ -11,6 +12,10 @@ from src.metrics import Filters, calculate, daily_sales, filter_dataset, order_r
 from src.reports import export_csv, export_excel, export_json, report
 
 st.set_page_config(page_title='CommerceFlow · Sales Dashboard', page_icon='🛍️', layout='wide')
+# This entrypoint is public and preview-only. Private Sheets jobs use the CLI.
+if any(os.environ.get(key) for key in ('GOOGLE_APPLICATION_CREDENTIALS', 'GOOGLE_SERVICE_ACCOUNT_JSON')):
+    st.error('Google credentials must not be attached to this public dashboard. Remove them from the web environment and use the standalone CLI for private synchronization.')
+    st.stop()
 st.markdown('''<style>
 .block-container{max-width:1440px;padding-top:2rem;padding-bottom:3rem}
 h1{letter-spacing:-.045em} h2,h3{letter-spacing:-.025em}
@@ -179,7 +184,6 @@ elif page == 'Report Export':
 elif page == 'Google Sheets Integration':
     from src.sheets_auth import credential_status
     from src.sheets import SheetTargets, build_plan
-    import os
     st.subheader('Google Sheets report synchronization')
     st.write('**Credential status:** ' + credential_status())
     st.caption('Configured does not mean authenticated. No Google request has been made by this page.')

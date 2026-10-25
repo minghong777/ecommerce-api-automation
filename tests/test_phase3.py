@@ -336,3 +336,37 @@ def test_readback_financial_reconciliation_rejects_inconsistent_summary():
     with httpx.Client(transport=httpx.MockTransport(lambda r: httpx.Response(200, json={'valueRanges':ranges}))) as http:
         with pytest.raises(SheetsError, match='financial reconciliation'):
             SheetsClient(lambda: 'token', http).verify(ID, inconsistent)
+
+@pytest.mark.parametrize('variable', ['GOOGLE_APPLICATION_CREDENTIALS', 'GOOGLE_SERVICE_ACCOUNT_JSON'])
+def test_public_dashboard_refuses_credentialed_environment(monkeypatch, variable):
+    from streamlit.testing.v1 import AppTest
+    from src.config import ROOT
+    monkeypatch.setenv(variable, 'test-only-value-not-a-real-credential')
+    loader = Mock(side_effect=AssertionError('Public dashboard must never load credentials'))
+    writer = Mock(side_effect=AssertionError('Public dashboard must never synchronize'))
+    monkeypatch.setattr('src.sheets_auth.load_credentials', loader)
+    monkeypatch.setattr('src.sheets.SheetsClient.sync', writer)
+    app = AppTest.from_file(ROOT / 'app.py').run(timeout=30)
+    assert not app.exception
+    assert any('credentials must not be attached' in error.value for error in app.error)
+    assert not app.metric
+    loader.assert_not_called()
+    writer.assert_not_called()
+
+
+def test_public_pages_never_authenticate_or_write(monkeypatch):
+    from streamlit.testing.v1 import AppTest
+    from src.config import ROOT
+    loader = Mock(side_effect=AssertionError('No private credential loading in web UI'))
+    token = Mock(side_effect=AssertionError('No Google tokens in web UI'))
+    writer = Mock(side_effect=AssertionError('No Google writes in web UI'))
+    monkeypatch.setattr('src.sheets_auth.load_credentials', loader)
+    monkeypatch.setattr('src.sheets_auth.AccessToken.__call__', token)
+    monkeypatch.setattr('src.sheets.SheetsClient.sync', writer)
+    app = AppTest.from_file(ROOT / 'app.py').run(timeout=30)
+    for page in app.sidebar.radio[0].options:
+        app.sidebar.radio[0].set_value(page).run(timeout=30)
+        assert not app.exception
+    loader.assert_not_called()
+    token.assert_not_called()
+    writer.assert_not_called()

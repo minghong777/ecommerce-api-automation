@@ -25,7 +25,7 @@ def evidence_html(data: dict) -> str:
     .hero{background:#162b45;color:white;padding:26px 30px;border-radius:16px}.tag{color:#52d5c0;font-weight:bold;font-size:13px;letter-spacing:2px}
     h1{font-size:32px;margin:14px 0}p{line-height:1.5;color:#60748a}.hero p{color:#c5d7e6;margin-bottom:0}.cards{display:flex;gap:16px;margin:22px 0}.card{background:white;border:1px solid #dfe7ef;border-radius:12px;padding:20px;flex:1}.value{font-size:32px;font-weight:bold;margin-top:10px}h2{font-size:21px;margin:24px 0 12px}
     table{border-collapse:collapse;width:100%;background:white;font-size:13px}th,td{padding:11px 12px;border-bottom:1px solid #dfe7ef;text-align:left;white-space:nowrap}th{background:#e9f1f5}footer{font-size:13px;color:#60748a;margin-top:18px}.success{color:#087f72;font-weight:bold}.note{font-size:13px}
-    </style><div class="hero"><div class="tag">GOOGLE SHEETS API · VERIFIED READ-BACK</div><h1>One report snapshot. No duplicate orders.</h1><p>Independent portfolio project · DEMO / SYNTHETIC DATA<br>Evidence view of actual API results; this is not the Google Sheets editor.</p></div>'''
+    </style><div class="hero"><div class="tag">GOOGLE SHEETS API · HISTORICAL VERIFIED READ-BACK</div><h1>One report snapshot. No duplicate orders.</h1><p>Independent portfolio project · DEMO / SYNTHETIC DATA<br>Dated API evidence, not a live connection or the Google Sheets editor.</p></div>'''
     metrics = [('Managed worksheets',len(data['worksheets'])),('Unique orders',data['unique_order_ids']),('Duplicate orders',data['duplicate_orders']),('Demo recognized sales','$'+format(float(data['summary']['net_sales']),',.2f'))]
     result += '<div class="cards">'+''.join('<div class="card">'+label+'<div class="value">'+str(value)+'</div></div>' for label,value in metrics)+'</div>'
     result += '<p class="success">Two real synchronizations completed · Exact cell comparison passed · Financial reconciliation passed</p>'
@@ -72,6 +72,8 @@ def main() -> None:
         capture('02-orders.png')
         navigate('Sales Analytics')
         page.set_viewport_size({'width':1440,'height':1600})
+        page.get_by_role('heading', name='Sales Analytics', exact=True).evaluate(
+            "e => { const main = document.querySelector('[data-testid=stMain]'); main.scrollTop += e.getBoundingClientRect().top - 90; }")
         capture('03-sales-analytics.png')
         page.set_viewport_size({'width':1440,'height':1280})
         navigate('Report Export')

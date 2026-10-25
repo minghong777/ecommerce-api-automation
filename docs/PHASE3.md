@@ -44,7 +44,7 @@ References: [Google service-account credentials](https://developers.google.com/w
 ## Standalone commands
 
 ```bash
-cd /home/michael/ai-workspace/ecommerce-api-automation
+cd ecommerce-api-automation
 .venv/bin/python -m src.automation --help
 
 # Default offline products; no Google calls, credential parsing, or local writes.
@@ -159,8 +159,10 @@ independent local option. See [Google Sheets limits](https://developers.google.c
 
 ## Streamlit and public hosting
 
-The new **Google Sheets Integration** page shows `Not configured` or
-`Configured (not authenticated)` without printing secrets or paths. It previews
+The **Google Sheets Integration** page runs without credentials and shows
+`Not configured` without printing secrets or paths. The public web entrypoint now
+stops if service-account credential environment variables are present; keep them
+in a separate private CLI process. It previews
 the **current dashboard selection** using the same report planner. It never claims
 that configuration means permission verification or a successful synchronization.
 
