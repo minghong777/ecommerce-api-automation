@@ -1,8 +1,20 @@
 # E-commerce API & Operations Automation
 
-> **🚀 [Open the Live Streamlit Demo](https://ecommerce-api-automation.streamlit.app/)**
->
-> Explore the sales dashboard in your browser. No Google login required. All customers, orders, and revenue are synthetic.
+## Live Demo
+
+**[Open the Live Streamlit Demo →](https://ecommerce-api-automation.streamlit.app/)**
+
+Note: This demo is hosted on Streamlit Community Cloud and may take a moment to wake up after a period of inactivity.
+
+1. Start on **Overview** to review sales KPIs, trends, and recent orders.
+2. Adjust sidebar date, status, or order-ID filters (expand the sidebar on mobile).
+3. Open **Orders Explorer** for line items, or **Sales Analytics** for product performance and reconciliation.
+4. Visit **Report Export** to download the current selection as CSV, JSON, or Excel.
+5. Optionally select **API Connection / Data Source → Fetch products from DummyJSON** to try the public product API. Offline mode works without this step.
+
+No account, API key, or Google login is required. All customers, orders, and revenue are synthetic. **Google Sheets Integration** previews a report only; authorized synchronization runs separately through the CLI. No scheduled jobs are enabled.
+
+## Project Overview
 
 CommerceFlow — E-commerce API Automation & Sales Dashboard.
 
@@ -12,21 +24,30 @@ A working Python portfolio application that connects a public product API to nor
 
 - GitHub repository: https://github.com/minghong777/ecommerce-api-automation
 
-## Preview
+## Screenshots
 
 ![Synthetic sales dashboard](docs/portfolio/screenshots/01-dashboard.png)
 
+<details>
+<summary>View orders, analytics, and report export</summary>
+
+**Orders and line items**
+
+![Synthetic orders explorer](docs/portfolio/screenshots/02-orders.png)
+
+**Sales analytics**
+
+![Synthetic sales analytics and reconciliation](docs/portfolio/screenshots/03-sales-analytics.png)
+
+**Downloadable reports**
+
+![CSV, JSON, and Excel report export](docs/portfolio/screenshots/04-report-export.png)
+
+</details>
+
 [Verified Google Sheets API read-back](docs/portfolio/screenshots/06-google-sheets-verification.png) · [Demo walkthrough](docs/DEMO.md)
 
-## Real API versus synthetic data
-
-[DummyJSON products](https://dummyjson.com/docs/products) supplies public sample product metadata only. The client requests `id,title,category,price` with `limit`/`skip` pagination; descriptions, reviewers, emails, images, and other unnecessary fields are not retained. The API does **not** supply dashboard orders or revenue.
-
-The bundled `assets/products.json` is a small, explicitly fictional, authored catalog, not a live API snapshot. Offline mode is the default and performs no network requests. Customers are named `Demo Customer 001`, etc.; no emails or real identities are generated.
-
-A fixed seed (`20261022`) produces 240 synthetic orders, 40 fictional customers, and purchase-time line items dated July–September 2026 UTC. The same seed and catalog reproduce the same dataset. Switching catalogs regenerates orders and can change revenue; this is clearly shown in the source page. A live catalog is capped at 500 records.
-
-## Features
+## Key Features
 
 - **Overview:** source disclosure, four KPIs, daily trend, top products, recent orders.
 - **API Connection / Data Source:** explicit fetch, product preview, record count, actual UTC retrieval time, errors, offline switch.
@@ -39,11 +60,21 @@ The public web entrypoint refuses a credentialed environment; keep Google servic
 
 The sidebar date range (inclusive UTC dates), status selection, and case-insensitive order-ID substring search apply to all KPIs, charts, tables, and exports. Selecting no statuses gives an empty result, not an implicit “all.” The API catalog preview is intentionally independent of order filters.
 
-## Tech stack
+## Example Use Cases
+
+- **Review sales consistently:** apply shared filters across KPIs, charts, orders, and exports.
+- **Investigate orders:** search an order ID and inspect its status and purchase-time line items.
+- **Prepare recurring reports:** export a filtered workbook with summary, orders, line items, and product performance, or use CSV/JSON for downstream processing.
+- **Explore API integration:** fetch public product metadata and review source status before exploring the generated synthetic reports.
+- **Preview Google Sheets reporting:** inspect the public report preview, then follow the separate CLI setup for authorized synchronization. Scheduling examples require additional configuration.
+
+These examples use fictional commerce data and do not represent a live store or measured client results.
+
+## Technologies Used
 
 Python 3.11+ (3.12 tested), Streamlit >=1.66.1, httpx, pandas, Plotly, openpyxl, pytest. The dashboard and CLI dry-run need no API keys, paid services, or credentials. Optional Google Sheets writes use `google-auth` service-account authentication configured outside the repository. Optional Playwright is used for browser verification only.
 
-## Local setup
+## How to Run Locally
 
 ```bash
 git clone https://github.com/minghong777/ecommerce-api-automation.git
@@ -69,6 +100,14 @@ uv pip install --python .venv/bin/python -r requirements.txt
 ```
 
 Start offline; use **API Connection / Data Source → Fetch products from DummyJSON** to opt into network access. Failed fetches leave the active dataset unchanged. Successful fetches are cached for 15 minutes with their original retrieval timestamp.
+
+## Real API versus synthetic data
+
+[DummyJSON products](https://dummyjson.com/docs/products) supplies public sample product metadata only. The client requests `id,title,category,price` with `limit`/`skip` pagination; descriptions, reviewers, emails, images, and other unnecessary fields are not retained. The API does **not** supply dashboard orders or revenue.
+
+The bundled `assets/products.json` is a small, explicitly fictional, authored catalog, not a live API snapshot. Offline mode is the default and performs no network requests. Customers are named `Demo Customer 001`, etc.; no emails or real identities are generated.
+
+A fixed seed (`20261022`) produces 240 synthetic orders, 40 fictional customers, and purchase-time line items dated July–September 2026 UTC. The same seed and catalog reproduce the same dataset. Switching catalogs regenerates orders and can change revenue; this is clearly shown in the source page. A live catalog is capped at 500 records.
 
 ## Architecture
 
